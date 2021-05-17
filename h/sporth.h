@@ -68,6 +68,7 @@ int sporth_stack_push_float(sporth_stack *stack, float val);
 int sporth_stack_push_string(sporth_stack *stack, char **str);
 float sporth_stack_pop_float(sporth_stack *stack);
 const char * sporth_stack_pop_string(sporth_stack *stack);
+void sporth_stack_pop_n(sporth_stack *stack, int n);
 int sporth_check_args(sporth_stack *stack, const char *args);
 int sporth_register_func(sporth_data *sporth, sporth_func *flist);
 int sporth_exec(sporth_data *sporth, const char *keyword);

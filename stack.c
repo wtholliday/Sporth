@@ -93,6 +93,17 @@ float sporth_stack_pop_float(sporth_stack *stack)
     return pstack->fval;
 }
 
+void sporth_stack_pop_n(sporth_stack *stack, int n) {
+    if(stack->error > 0) return;
+
+    if(stack->pos < n) {
+        fprintf(stderr, "Cannot pop %d elements off stack\n", n);
+        return; 
+    }
+
+    stack->pos -= n;
+}
+
 /*TODO use this function inside sporth stack functions*/
 sporth_stack_val * sporth_stack_get_last(sporth_stack *stack)
 {
