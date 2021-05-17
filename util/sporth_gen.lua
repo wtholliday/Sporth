@@ -59,11 +59,25 @@ function UGen.create(self, sp, macro)
     io.write(string.format("%sstack->error++;\n", indent2))
     io.write(string.format("%sreturn PLUMBER_NOTOK;\n", indent2))
     io.write(string.format("%s}\n", indent))
-    self:pop(sp);
+    self:popn(sp);
     for i = 1, sp.noutputs do
     io.write(string.format("%ssporth_stack_push_float(stack, 0);\n", indent))
     end
     io.write(string.format("%sbreak;\n", indent));
+end
+
+function len(array)
+    if array ~= nil then
+        return #array
+    end
+    return 0
+end
+
+function UGen.popn(self, sp)
+    spaces = "        "
+    indent = spaces .. "    "
+    n = len(sp.params.mandatory) + len(sp.params.optional) + sp.ninputs
+    io.write(string.format("%ssporth_stack_pop_n(stack, %d)\n", indent, n))
 end
 
 function UGen.pop(self, sp)
