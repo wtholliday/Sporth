@@ -124,4 +124,5 @@ clean:
 	rm -rf sporth.h
 	rm -rf libsporth.a libsporth_dyn.so
 	rm -rf sporth
+	rm -rf *plist
 
